@@ -1,5 +1,6 @@
 package com.joeskott.ridingutils;
 
+import com.joeskott.ridingutils.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -19,6 +20,11 @@ public class RidingUtils {
     public RidingUtils()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+
+        ModItems.register(modEventBus);
+
+
 
         modEventBus.addListener(this::commonSetup);
 
