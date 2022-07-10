@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C C",
+    "L L",
+    "#R#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:string"
+    },
+    "C": {
+      "item": "minecraft:iron_ingot"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "R": {
+      "item": "minecraft:lead"
+    }
+  },
+  "result": {
+    "item": "ridingutils:reins"
+  }
+}
