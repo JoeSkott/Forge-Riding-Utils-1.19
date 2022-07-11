@@ -1,6 +1,7 @@
 package com.joeskott.ridingutils.item;
 
 import com.joeskott.ridingutils.RidingUtils;
+import com.joeskott.ridingutils.item.custom.ReinsItem;
 import com.joeskott.ridingutils.item.custom.RidingCropItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -15,10 +16,10 @@ public class ModItems {
 
     // ITEM DEFINITIONS
     public static final RegistryObject<Item> RIDING_CROP = ITEMS.register("riding_crop",
-            () -> new RidingCropItem(new Item.Properties().tab(CreativeModeTab.TAB_TRANSPORTATION)));
+            () -> new RidingCropItem(new Item.Properties().tab(CreativeModeTab.TAB_TRANSPORTATION).durability(64)));
 
     public static final RegistryObject<Item> REINS = ITEMS.register("reins",
-            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_TRANSPORTATION)));
+            () -> new ReinsItem(new Item.Properties().tab(CreativeModeTab.TAB_TRANSPORTATION).durability(128)));
 
 
 
