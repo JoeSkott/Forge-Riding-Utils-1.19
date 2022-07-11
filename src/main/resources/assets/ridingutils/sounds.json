@@ -1,0 +1,8 @@
+{
+  "riding_crop_active": {
+    "subtitle": "sounds.ridingutils.riding_crop_active",
+    "sounds": [
+      "ridingutils:riding_crop_active"
+    ]
+  }
+}

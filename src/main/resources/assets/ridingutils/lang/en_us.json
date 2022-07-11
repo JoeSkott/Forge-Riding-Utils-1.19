@@ -1,4 +1,12 @@
 {
-  "item.ridingutils.riding_crop": "Riding Crop",
-  "item.ridingutils.reins": "Reins"
+  "item.ridingutils.riding_crop": "§6Riding Crop§r",
+  "item.ridingutils.reins": "§eReins§r",
+
+  "tooltip.ridingutils.riding_crop.tooltip.shift": "§bRight Click while riding for a temporary speed boost. Won't harm mounts unless durability is low. Hold Right Click in the water and your mount will swim with you riding!§r",
+  "tooltip.ridingutils.riding_crop.tooltip": "Press §bSHIFT§r for more info",
+
+  "tooltip.ridingutils.reins.tooltip.shift": "§bRight Click any mob (well, most mobs) to ride. Hold Right Click while riding to move in that direction. Works on flying mobs! Mounts will swim with you riding!§r",
+  "tooltip.ridingutils.reins.tooltip": "Press §bSHIFT§r for more info",
+
+  "sounds.ridingutils.riding_crop_active": "Used Riding Crop"
 }

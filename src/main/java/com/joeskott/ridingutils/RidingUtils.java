@@ -1,11 +1,16 @@
 package com.joeskott.ridingutils;
 
+import com.joeskott.ridingutils.config.RidingUtilsClientConfigs;
+import com.joeskott.ridingutils.config.RidingUtilsCommonConfigs;
 import com.joeskott.ridingutils.item.ModItems;
+import com.joeskott.ridingutils.sound.ModSounds;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -21,9 +26,11 @@ public class RidingUtils {
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, RidingUtilsClientConfigs.SPEC, "ridingutilities-client.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, RidingUtilsCommonConfigs.SPEC, "ridingutilities-common.toml");
 
         ModItems.register(modEventBus);
-
+        ModSounds.register(modEventBus);
 
 
         modEventBus.addListener(this::commonSetup);
