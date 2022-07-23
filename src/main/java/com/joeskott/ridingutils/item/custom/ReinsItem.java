@@ -11,6 +11,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.animal.horse.Horse;
+import net.minecraft.world.entity.monster.Spider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.entity.vehicle.Minecart;
@@ -112,17 +113,20 @@ public class ReinsItem extends Item {
             return;
         }
 
+        boolean climbingMob = (playerMount instanceof Spider);
+
         if(getBlockCollision(playerMount)) {
-            addJumpMotion(player, playerMount);
+            addJumpMotion(player, playerMount, climbingMob);
         }
 
         Vec3 lookAngle = player.getLookAngle();
         Vec3 lastMotion = playerMount.getDeltaMovement();
 
+
         boolean offGroundCheck = !playerMount.isOnGround() && lastMotion.y < -0.1f;
         boolean inWaterCheck = playerMount.isInWater();
         boolean flightCheck = (playerMount instanceof FlyingMob);
-        if((offGroundCheck || inWaterCheck) && !flightCheck) {
+        if((offGroundCheck || inWaterCheck) && !flightCheck && !climbingMob) {
             return;
         }
 
@@ -170,9 +174,9 @@ public class ReinsItem extends Item {
     }
 
 
-    private void addJumpMotion(Player player, Entity playerMount) {
+    private void addJumpMotion(Player player, Entity playerMount, boolean climbingMob) {
         // Method must be executed inside addMotion
-        if(!playerMount.isOnGround() || getBlockCeilingCollision(player)) {
+        if((!playerMount.isOnGround() && !climbingMob) || getBlockCeilingCollision(player)) {
             return;
         }
 
