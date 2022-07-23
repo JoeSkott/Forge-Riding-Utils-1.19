@@ -9,6 +9,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.vehicle.Boat;
@@ -152,13 +153,15 @@ public class ReinsItem extends Item {
 
         boolean offGroundCheck = (!playerMount.isOnGround() && !playerMount.isInWater());
         boolean flightCheck = (playerMount instanceof FlyingMob);
+        boolean waterMob = (playerMount instanceof WaterAnimal);
+
         if(offGroundCheck && !flightCheck) {
             return;
         }
         Vec3 lookAngle = player.getLookAngle();
         Vec3 lastMotion = playerMount.getDeltaMovement();
 
-        double boost = 0.01d;
+        double boost = (waterMob) ? 0.01d : lastMotion.y;
 
         Vec3 newMotion = new Vec3(lastMotion.x + (lookAngle.x/4), boost, lastMotion.z + (lookAngle.z/4));
         playerMount.setDeltaMovement(newMotion);
