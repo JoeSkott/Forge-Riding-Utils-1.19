@@ -70,7 +70,7 @@ public class RidingCropItem extends Item {
         int maxDamage = itemSelf.getMaxDamage();
         int currentDamage = itemSelf.getDamageValue();
 
-        int chanceRange = maxDamage - currentDamage + 1;
+        int chanceRange = (maxDamage - currentDamage + 1)/2;
 
         boolean isOnGround = playerMount.isOnGround();
         boolean isInWater = playerMount.isInWater();
