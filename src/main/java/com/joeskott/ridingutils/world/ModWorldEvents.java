@@ -155,7 +155,7 @@ public class ModWorldEvents {
         result += range;
         result /= 2.0D;
 
-        System.out.println(result);
+        //System.out.println(result);
 
         return result;
     }
