@@ -36,6 +36,8 @@ public class RidingCropItem extends Item {
 
     int cooldownTicks = 20;
 
+    int waterCooldownTicks = 100;
+
     int damageCheck = 32;
 
     int durationOfEffect = 120;
@@ -84,9 +86,14 @@ public class RidingCropItem extends Item {
         }
 
         if(!level.isClientSide()) {
-            if(isOnGround) {
+            if(isOnGround || isInWater) {
                 activateCropSound(playerMount);
-                player.getCooldowns().addCooldown(this, cooldownTicks);
+                if (isOnGround) {
+                    player.getCooldowns().addCooldown(this, cooldownTicks);
+                } else {
+                    player.getCooldowns().addCooldown(this, waterCooldownTicks);
+                }
+
                 addItemDamage(player, itemSelf, damageOnUse);
                 rollForHPDamage(player, playerMount, chanceRange, currentDamage, maxDamage);
             }
@@ -119,9 +126,9 @@ public class RidingCropItem extends Item {
     }
 
     private void addWaterMotion(Entity entity) {
-        double boost = 0.05d;
+        double boost = 0.4d;
         Vec3 lookAngle = entity.getLookAngle();
-        Vec3 newMotion = new Vec3(lookAngle.x / 3, boost, lookAngle.z / 3);
+        Vec3 newMotion = new Vec3(lookAngle.x, boost, lookAngle.z);
 
         entity.setDeltaMovement(newMotion);
     }
@@ -218,6 +225,8 @@ public class RidingCropItem extends Item {
 
     private void updateValuesFromConfig() {
         cooldownTicks = RidingUtilsCommonConfigs.ridingCropCooldownTicks.get();
+
+        waterCooldownTicks = RidingUtilsCommonConfigs.ridingCropWaterCooldownTicks.get();
 
         damageCheck = RidingUtilsCommonConfigs.ridingCropDangerStart.get();
 

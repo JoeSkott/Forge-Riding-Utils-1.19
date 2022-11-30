@@ -10,6 +10,7 @@ public class RidingUtilsCommonConfigs {
     public static final ForgeConfigSpec.ConfigValue<Integer> ridingCropDuration;
     public static final ForgeConfigSpec.ConfigValue<Integer> ridingCropControllableSpeedAmplifier;
     public static final ForgeConfigSpec.ConfigValue<Integer> ridingCropCooldownTicks;
+    public static final ForgeConfigSpec.ConfigValue<Integer> ridingCropWaterCooldownTicks;
     public static final ForgeConfigSpec.ConfigValue<Boolean> ridingCropAnimDamage;
     public static final ForgeConfigSpec.ConfigValue<Boolean> ridingCropBuck;
     public static final ForgeConfigSpec.ConfigValue<Integer> ridingCropDangerStart;
@@ -33,6 +34,9 @@ public class RidingUtilsCommonConfigs {
 
         ridingCropCooldownTicks = BUILDER.comment("How many ticks before the riding crop can be used again? (Defaults to 60 or 3 seconds)")
                 .defineInRange("Riding Crop Cooldown", 60, 1, 99999999);
+
+        ridingCropWaterCooldownTicks = BUILDER.comment("How many ticks before the riding crop can be used again? (Defaults to 60 or 3 seconds)")
+                .defineInRange("Riding Crop Water Cooldown", 120, 1, 99999999);
 
         ridingCropAnimDamage = BUILDER.comment("Does the riding crop occasionally cause faux damage even when repaired? (Defaults to false)")
                 .define("Riding Crop Fake Damage", false);
