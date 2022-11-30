@@ -13,6 +13,7 @@ public class RidingUtilsCommonConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> ridingCropAnimDamage;
     public static final ForgeConfigSpec.ConfigValue<Boolean> ridingCropBuck;
     public static final ForgeConfigSpec.ConfigValue<Integer> ridingCropDangerStart;
+    public static final ForgeConfigSpec.BooleanValue horsesSwimNaturally;
 
 
     static {
@@ -42,6 +43,8 @@ public class RidingUtilsCommonConfigs {
         ridingCropDangerStart = BUILDER.comment("When does the risk of side effects begin (at what damage value, higher number = lower durability)? (Defaults to 32)")
                 .defineInRange("Riding Crop Buck Danger", 32, 1, 2048);
 
+        horsesSwimNaturally = BUILDER.comment("Do horses naturally swim in water (even lava) when they have a rider? (Defaults to true)")
+                .define("Horses Swim Naturally", true);
 
         BUILDER.pop();
         SPEC = BUILDER.build();
